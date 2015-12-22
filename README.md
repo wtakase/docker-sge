@@ -12,8 +12,8 @@ Usage
 2. Boot NFS servers
 
   ```bash
-  docker run -d --name nfshome --privileged cpuguy83/nfs-server /mnt
-  docker run -d --name nfsopt --privileged cpuguy83/nfs-server /mnt
+  docker run -d --name nfshome --privileged cpuguy83/nfs-server /exports
+  docker run -d --name nfsopt --privileged cpuguy83/nfs-server /exports
   ```
 
 3. Boot SGE master
