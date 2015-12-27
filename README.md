@@ -1,7 +1,77 @@
 Docker SGE (Son of Grid Engine)
 ====
 
-Usage
+Kubernetes All-in-One Usage
+----
+1. Setup Kubernetes cluster, DNS service, and SGE cluster with number of workers
+
+  Be sure `KUBE_SERVER` set correctly
+  ```bash
+  export KUBE_SERVER=xxx.xxx.xxx.xxx; ./kubernetes/setup_all.sh 20
+  ```
+
+2. Submit Job
+
+  ```bash
+  kubectl exec sgemaster -- sudo su sgeuser bash -c '. /etc/profile.d/sge.sh; echo "/bin/hostname" | qsub'
+  kubectl exec sgemaster -- sudo su sgeuser bash -c 'cat /home/sgeuser/STDIN.o1'
+  ```
+
+Kubernetes Sted-by-Step Usage
+----
+1. Setup Kubernetes cluster
+
+  ```bash
+  ./kubernetes/setup_k8s.sh
+  ```
+
+2. Setup DNS service
+
+  Be sure `KUBE_SERVER` set correctly
+
+  ```bash
+  export KUBE_SERVER=xxx.xxx.xxx.xxx; ./kubernetes/setup_dns.sh
+  ```
+
+3. Check DNS service
+
+    1. Boot test client
+
+    ```bash
+    kubectl create -f ./kubernetes/skydns/busybox.yaml
+    ```
+
+    2. Check normal lookup
+
+    ```bash
+    kubectl exec busybox -- nslookup kubernetes
+    ```
+
+    3. Check reverse lookup
+    ```bash
+    kubectl exec busybox -- nslookup 10.0.0.1
+    ```
+
+    4. Check pod name lookup
+
+    ```bash
+    kubectl exec busybox -- nslookup busybox.default
+    ```
+
+4. Setup SGE cluster with number of workers
+
+  ```bash
+  ./kubernetes/setup_sge.sh 10
+  ```
+
+5. Submit job
+
+  ```bash
+  kubectl exec sgemaster -- sudo su sgeuser bash -c '. /etc/profile.d/sge.sh; echo "/bin/hostname" | qsub'
+  kubectl exec sgemaster -- sudo su sgeuser bash -c 'cat /home/sgeuser/STDIN.o1'
+  ```
+
+Simple Docker Command Usage
 ----
 1. Load nfsd module
 
@@ -34,5 +104,4 @@ Usage
   ```bash
   docker exec -u sgeuser -it sgemaster bash -c '. /etc/profile.d/sge.sh; echo "/bin/hostname" | qsub'
   docker exec -u sgeuser -it sgemaster cat /home/sgeuser/STDIN.o1
-  sgeworker01
   ```

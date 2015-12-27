@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sgemaster
+  labels:
+    app: sgemaster
+spec:
+  containers:
+  - name: sgemaster
+    image: wtakase/sge-master
+    ports:
+    - containerPort: 22
+      protocol: TCP
+    - containerPort: 6444
+      protocol: TCP
+    securityContext:
+      privileged: true

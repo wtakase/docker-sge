@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: nfsopt
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: nfsopt
+    spec:
+      containers:
+      - name: nfsopt
+        image: wtakase/nfs-server
+        env:
+        - name: INSECURE
+          value: "1"
+        args:
+        - /exports
+        ports:
+        - containerPort: 111
+          protocol: UDP
+        - containerPort: 2049
+          protocol: TCP
+        securityContext:
+          privileged: true

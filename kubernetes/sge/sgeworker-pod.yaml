@@ -1,0 +1,21 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sgeworker001
+  labels:
+    app: sgeworker
+spec:
+  containers:
+  - name: sgeworker001
+    image: wtakase/sge-worker
+    env:
+    - name: SGEMASTER_PORT_22_TCP_ADDR
+      value: sgemaster
+    ports:
+    - containerPort: 22
+      protocol: TCP
+    - containerPort: 6445
+      protocol: TCP
+    securityContext:
+      privileged: true
