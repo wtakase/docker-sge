@@ -3,7 +3,7 @@ Docker SGE (Son of Grid Engine)
 
 Kubernetes All-in-One Usage
 ----
-1. Setup Kubernetes cluster, DNS service, and SGE cluster with number of workers
+1. Setup Kubernetes cluster, DNS service, and SGE cluster with number of SGE workers
 
   Be sure `KUBE_SERVER` set correctly
   ```bash
@@ -34,31 +34,30 @@ Kubernetes Sted-by-Step Usage
   ```
 
 3. Check DNS service
+  1. Boot test client
 
-    1. Boot test client
+  ```bash
+  kubectl create -f ./kubernetes/skydns/busybox.yaml
+  ```
 
-    ```bash
-    kubectl create -f ./kubernetes/skydns/busybox.yaml
-    ```
+  2. Check normal lookup
 
-    2. Check normal lookup
+  ```bash
+  kubectl exec busybox -- nslookup kubernetes
+  ```
 
-    ```bash
-    kubectl exec busybox -- nslookup kubernetes
-    ```
+  3. Check reverse lookup
+  ```bash
+  kubectl exec busybox -- nslookup 10.0.0.1
+  ```
 
-    3. Check reverse lookup
-    ```bash
-    kubectl exec busybox -- nslookup 10.0.0.1
-    ```
+  4. Check pod name lookup
 
-    4. Check pod name lookup
+  ```bash
+  kubectl exec busybox -- nslookup busybox.default
+  ```
 
-    ```bash
-    kubectl exec busybox -- nslookup busybox.default
-    ```
-
-4. Setup SGE cluster with number of workers
+4. Setup SGE cluster with number of SGE workers
 
   ```bash
   ./kubernetes/setup_sge.sh 10
