@@ -17,6 +17,12 @@ Kubernetes All-in-One Usage
   kubectl exec sgemaster -- sudo su sgeuser bash -c 'cat /home/sgeuser/STDIN.o1'
   ```
 
+3. Add SGE workers
+
+  ```bash
+  ./kubernetes/add_sge_workers.sh 10
+  ```
+
 Kubernetes Sted-by-Step Usage
 ----
 1. Setup Kubernetes cluster
@@ -68,6 +74,12 @@ Kubernetes Sted-by-Step Usage
   ```bash
   kubectl exec sgemaster -- sudo su sgeuser bash -c '. /etc/profile.d/sge.sh; echo "/bin/hostname" | qsub'
   kubectl exec sgemaster -- sudo su sgeuser bash -c 'cat /home/sgeuser/STDIN.o1'
+  ```
+
+6. Add SGE workers
+
+  ```bash
+  ./kubernetes/add_sge_workers.sh 10
   ```
 
 Simple Docker Command Usage

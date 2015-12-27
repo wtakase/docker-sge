@@ -1,0 +1,3 @@
+kubernetes/sge/sgeworkers-pod.yaml
+kubernetes/skydns/skydns-rc.yaml
+kubernetes/skydns/skydns-svc.yaml

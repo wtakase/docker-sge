@@ -60,29 +60,7 @@ if [ $I -gt $TIMEOUT ]; then
 fi
 echo ""
 
-echo "# Boot ${WORKER_NUM:=1} SGE workers"
-echo "" > ${SGE_DIR}/sgeworkers-pod.yaml
-for i in $(seq 1 ${WORKER_NUM:=1}); do
-    NAME=$(printf sgeworker%03d $i)
-    sed -e "s/sgeworker001/${NAME}/g" ${SGE_DIR}/sgeworker-pod.yaml >> ${SGE_DIR}/sgeworkers-pod.yaml
-done;
-
-kubectl create -f ${SGE_DIR}/sgeworkers-pod.yaml
-I=0
-while [ $I -le $TIMEOUT ]; do
-    if [ "`kubectl logs $(printf sgeworker%03d ${WORKER_NUM:=1}) | tail -1 | awk '{print $1}'`" = "Install" ]; then
-        break
-    fi
-    echo "Wait SGE workers..."
-    I=`expr $I + $SLEEP_INTERVAL`
-    sleep $SLEEP_INTERVAL
-done
-kubectl get pods -l app=sgeworker
-if [ $I -gt $TIMEOUT ]; then
-    echo "Timeout"
-    exit 1
-fi
-echo ""
+./kubernetes/add_sge_workers.sh ${WORKER_NUM:=1}
 
 echo "# SGE Usage:"
 echo "  kubectl exec sgemaster -- sudo su sgeuser bash -c '. /etc/profile.d/sge.sh; echo "/bin/hostname" | qsub'"
