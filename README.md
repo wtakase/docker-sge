@@ -34,24 +34,24 @@ Kubernetes Sted-by-Step Usage
   ```
 
 3. Check DNS service
-  1. Boot test client
+  * Boot test client
 
   ```bash
   kubectl create -f ./kubernetes/skydns/busybox.yaml
   ```
 
-  2. Check normal lookup
+  * Check normal lookup
 
   ```bash
   kubectl exec busybox -- nslookup kubernetes
   ```
 
-  3. Check reverse lookup
+  * Check reverse lookup
   ```bash
   kubectl exec busybox -- nslookup 10.0.0.1
   ```
 
-  4. Check pod name lookup
+  * Check pod name lookup
 
   ```bash
   kubectl exec busybox -- nslookup busybox.default
