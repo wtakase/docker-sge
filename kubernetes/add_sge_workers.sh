@@ -21,7 +21,7 @@ LAST_WORKER=$NAME
 kubectl create -f ${SGE_DIR}/sgeworkers-pod.yaml
 I=0
 while [ $I -le $TIMEOUT ]; do
-    if [ "`kubectl logs ${LAST_WORKER} | tail -1 | awk '{print $1}'`" = "Install" ]; then
+    if [ "`kubectl logs ${LAST_WORKER} 2>&1 | tail -1 | awk '{print $1}'`" = "Install" ]; then
         break
     fi
     echo "Wait SGE workers..."
