@@ -5,9 +5,12 @@ Kubernetes All-in-One Usage
 ----
 1. Setup Kubernetes cluster, DNS service, and SGE cluster with number of SGE workers
 
-  Be sure `KUBE_SERVER` set correctly
+  Set `KUBE_SERVER`, `DNS_DOMAIN`, and `DNS_SERVER_IP` currectly
   ```bash
-  export KUBE_SERVER=xxx.xxx.xxx.xxx; ./kubernetes/setup_all.sh 20
+  export KUBE_SERVER=xxx.xxx.xxx.xxx
+  export DNS_DOMAIN=xxxx.xxxx
+  export DNS_SERVER_IP=xxx.xxx.xxx.xxx
+  ./kubernetes/setup_all.sh 20
   ```
 
 2. Submit Job
@@ -19,7 +22,9 @@ Kubernetes All-in-One Usage
 
 3. Add SGE workers
 
+  Set `DNS_DOMAIN` optionally
   ```bash
+  export DNS_DOMAIN=xxxx.xxxx
   ./kubernetes/add_sge_workers.sh 10
   ```
 
@@ -33,10 +38,12 @@ Kubernetes Sted-by-Step Usage
 
 2. Setup DNS service
 
-  Be sure `KUBE_SERVER` set correctly
-
+  Set `KUBE_SERVER`, `DNS_DOMAIN`, and `DNS_SERVER_IP` currectly
   ```bash
-  export KUBE_SERVER=xxx.xxx.xxx.xxx; ./kubernetes/setup_dns.sh
+  export KUBE_SERVER=xxx.xxx.xxx.xxx
+  export DNS_DOMAIN=xxxx.xxxx
+  export DNS_SERVER_IP=xxx.xxx.xxx.xxx
+  ./kubernetes/setup_dns.sh
   ```
 
 3. Check DNS service
@@ -78,7 +85,9 @@ Kubernetes Sted-by-Step Usage
 
 6. Add SGE workers
 
+  Set `DNS_DOMAIN` optionally
   ```bash
+  export DNS_DOMAIN=xxxx.xxxx
   ./kubernetes/add_sge_workers.sh 10
   ```
 

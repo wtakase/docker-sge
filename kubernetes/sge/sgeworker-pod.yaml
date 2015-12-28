@@ -12,6 +12,8 @@ spec:
     env:
     - name: SGEMASTER_PORT_22_TCP_ADDR
       value: sgemaster
+    - name: HOST_NAME
+      value: sgeworker001
     ports:
     - containerPort: 22
       protocol: TCP
