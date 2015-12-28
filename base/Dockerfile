@@ -8,4 +8,5 @@ RUN rm -f /etc/ssh/ssh_host_dsa_key /etc/ssh/ssh_host_rsa_key && \
     ssh-keygen -q -N "" -t rsa -f /etc/ssh/ssh_host_rsa_key
 RUN sed -i -e "s/Defaults *requiretty.*/#Defaults requiretty/g" /etc/sudoers
 RUN echo "source /opt/sge/default/common/settings.sh" >> /etc/profile.d/sge.sh
+RUN sed -i -e "s/^hosts:.*/hosts:      dns files/g" /etc/nsswitch.conf
 EXPOSE 22
