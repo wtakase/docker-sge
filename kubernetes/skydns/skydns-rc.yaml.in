@@ -89,4 +89,4 @@ spec:
       volumes:
       - name: etcd-storage
         emptyDir: {}
-      dnsPolicy: Default  # Don't use cluster DNS.
+      dnsPolicy: ClusterFirst 
