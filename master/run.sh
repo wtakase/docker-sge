@@ -4,7 +4,7 @@ mv /opt/sge /tmp/
 /sbin/service rpcbind start
 mount -t nfs ${NFSHOME_PORT_2049_TCP_ADDR}:/ /home
 mount -t nfs ${NFSOPT_PORT_2049_TCP_ADDR}:/ /opt
-if [ -z ${NOT_INIT} ]; then
+if [ -z "${NOT_INIT}" ]; then
     rm -rf /opt/sge
     rm -rf /home/sgeuser
 fi

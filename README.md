@@ -3,9 +3,10 @@ Docker SGE (Son of Grid Engine)
 
 Kubernetes All-in-One Usage
 ----
-1. Setup Kubernetes cluster, DNS service, and SGE cluster with number of SGE workers
+1. Setup Kubernetes cluster, DNS service, and SGE cluster
 
-  Set `KUBE_SERVER`, `DNS_DOMAIN`, and `DNS_SERVER_IP` currectly
+  Set `KUBE_SERVER`, `DNS_DOMAIN`, and `DNS_SERVER_IP` currectly.
+  And run `./kubernetes/setup_all.sh` with number of SGE workers.
   ```bash
   export KUBE_SERVER=xxx.xxx.xxx.xxx
   export DNS_DOMAIN=xxxx.xxxx
@@ -70,8 +71,9 @@ Kubernetes Sted-by-Step Usage
   kubectl exec busybox -- nslookup busybox.default
   ```
 
-4. Setup SGE cluster with number of SGE workers
+4. Setup SGE cluster
 
+  Run `./kubernetes/setup_sge.sh` with number of SGE workers.
   ```bash
   ./kubernetes/setup_sge.sh 10
   ```
