@@ -23,9 +23,7 @@ Kubernetes All-in-One Usage
 
 3. Add SGE workers
 
-  Set `DNS_DOMAIN` optionally
   ```bash
-  export DNS_DOMAIN=xxxx.xxxx
   ./kubernetes/add_sge_workers.sh 10
   ```
 
@@ -87,9 +85,7 @@ Kubernetes Sted-by-Step Usage
 
 6. Add SGE workers
 
-  Set `DNS_DOMAIN` optionally
   ```bash
-  export DNS_DOMAIN=xxxx.xxxx
   ./kubernetes/add_sge_workers.sh 10
   ```
 
