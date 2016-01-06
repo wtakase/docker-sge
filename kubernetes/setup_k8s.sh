@@ -31,7 +31,6 @@ docker run \
         --config=/etc/kubernetes/manifests-multi \
         --cluster-dns=10.0.0.10 \
         --cluster-domain=cluster.local \
-        --resolv-conf="" \
         --allow-privileged=true --v=2
 
 docker run \

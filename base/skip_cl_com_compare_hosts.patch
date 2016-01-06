@@ -1,0 +1,13 @@
+diff -aurN sge-8.1.8.org/source/libs/comm/cl_communication.c sge-8.1.8/source/libs/comm/cl_communication.c
+--- sge-8.1.8.org/source/libs/comm/cl_communication.c   2016-01-04 10:05:22.000000000 +0000
++++ sge-8.1.8/source/libs/comm/cl_communication.c       2016-01-05 08:42:13.794372696 +0000
+@@ -2092,6 +2092,9 @@
+     char fixed_host_buffer1[CL_COM_COMPARE_HOSTS_STATIC_BUFFER_SIZE];
+     char fixed_host_buffer2[CL_COM_COMPARE_HOSTS_STATIC_BUFFER_SIZE];
+ 
++    // NOTE(wtakase): Skip host comparing and this may be dangeous.
++    return CL_RETVAL_OK;
++
+     if (host1 == NULL || host2 == NULL) {
+        return CL_RETVAL_PARAMS;
+     }

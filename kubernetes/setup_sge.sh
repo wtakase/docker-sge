@@ -46,7 +46,7 @@ echo "# Boot SGE master"
 kubectl create -f ${SGE_DIR}/sgemaster-pod.yaml
 I=0
 while [ $I -le $TIMEOUT ]; do
-    if [ "`kubectl logs sgemaster | tail -1 | awk '{print $1}'`" = "Install" ]; then
+    if [ "`kubectl logs sgemaster 2>&1 | tail -1 | awk '{print $1}'`" = "Install" ]; then
         break
     fi
     echo "Wait SGE master..."

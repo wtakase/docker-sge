@@ -8,7 +8,7 @@ SGE_DIR=kubernetes/sge
 echo "# Boot ${WORKER_NUM:=1} SGE workers"
 echo "" > ${SGE_DIR}/sgeworkers-pod.yaml
 for i in $(seq 1 ${WORKER_NUM:=1}); do
-    NAME="sgeworker-`cat /dev/urandom | tr -dc 'a-z0-9' | fold -w 16 | head -n 1`"
+    NAME="sgeworker-`cat /dev/urandom | tr -dc 'a-z0-9' | fold -w 8 | head -n 1`"
     sed -e "s/sgeworker001/${NAME}/g" ${SGE_DIR}/sgeworker-pod.yaml >> ${SGE_DIR}/sgeworkers-pod.yaml
 done;
 LAST_WORKER=$NAME
