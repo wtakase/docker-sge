@@ -1,7 +1,7 @@
 #!/bin/sh
 
 WORKER_NUM=$1
-TIMEOUT=240
+TIMEOUT=480
 SLEEP_INTERVAL=5
 SGE_DIR=kubernetes/sge
 
