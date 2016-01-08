@@ -6,11 +6,41 @@ metadata:
     app: nfshome
 spec:
   ports:
-  - name: rpc
+  - name: portmapper-udp
     port: 111
     protocol: UDP
-  - name: nfs
+  - name: portmapper-tcp
+    port: 111
+    protocol: TCP
+  - name: nfs-udp
     port: 2049
+    protocol: UDP
+  - name: nfs-tcp
+    port: 2049
+    protocol: TCP
+  - name: status-udp
+    port: 32765
+    protocol: UDP
+  - name: status-tcp
+    port: 32765
+    protocol: TCP
+  - name: statd-udp
+    port: 32766
+    protocol: UDP
+  - name: statd-tcp
+    port: 32766
+    protocol: TCP
+  - name: mountd-udp
+    port: 32767
+    protocol: UDP
+  - name: mountd-tcp
+    port: 32767
+    protocol: TCP
+  - name: nlockmgr-udp
+    port: 32768
+    protocol: UDP
+  - name: nlockmgr-tcp
+    port: 32768
     protocol: TCP
   selector:
     app: nfshome

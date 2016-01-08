@@ -11,16 +11,33 @@ spec:
     spec:
       containers:
       - name: nfsopt
-        image: wtakase/nfs-server
-        env:
-        - name: INSECURE
-          value: "1"
+        image: wtakase/nfs-server:v3
         args:
         - /exports
         ports:
         - containerPort: 111
           protocol: UDP
+        - containerPort: 111
+          protocol: TCP
         - containerPort: 2049
+          protocol: UDP
+        - containerPort: 2049
+          protocol: TCP
+        - containerPort: 32765
+          protocol: UDP
+        - containerPort: 32765
+          protocol: TCP
+        - containerPort: 32766
+          protocol: UDP
+        - containerPort: 32766
+          protocol: TCP
+        - containerPort: 32767
+          protocol: UDP
+        - containerPort: 32767
+          protocol: TCP
+        - containerPort: 32768
+          protocol: UDP
+        - containerPort: 32768
           protocol: TCP
         securityContext:
           privileged: true

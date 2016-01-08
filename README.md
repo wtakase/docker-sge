@@ -106,21 +106,21 @@ Simple Docker Command Usage
 3. Boot NFS servers
 
   ```bash
-  docker run -d --name nfshome --privileged cpuguy83/nfs-server /exports
-  docker run -d --name nfsopt --privileged cpuguy83/nfs-server /exports
+  docker run -d --name nfshome --privileged wtakase/nfs-server:v3 /exports
+  docker run -d --name nfsopt --privileged wtakase/nfs-server:v3 /exports
   ```
 
 4. Boot SGE master
 
   ```bash
-  docker run -d -h sgemaster --name sgemaster --privileged --link nfshome:nfshome --link nfsopt:nfsopt wtakase/sge-master
+  docker run -d -h sgemaster --name sgemaster --privileged --link nfshome:nfshome --link nfsopt:nfsopt wtakase/sge-master:nfsv3
   ```
 
 5. Boot SGE workers
 
   ```bash
-  docker run -d -h sgeworker01 --name sgeworker01 --privileged --link sgemaster:sgemaster --link nfshome:nfshome --link nfsopt:nfsopt wtakase/sge-worker
-  docker run -d -h sgeworker02 --name sgeworker02 --privileged --link sgemaster:sgemaster --link nfshome:nfshome --link nfsopt:nfsopt wtakase/sge-worker
+  docker run -d -h sgeworker01 --name sgeworker01 --privileged --link sgemaster:sgemaster --link nfshome:nfshome --link nfsopt:nfsopt wtakase/sge-worker:nfsv3
+  docker run -d -h sgeworker02 --name sgeworker02 --privileged --link sgemaster:sgemaster --link nfshome:nfshome --link nfsopt:nfsopt wtakase/sge-worker:nfsv3
   ```
 
 6. Submit job
