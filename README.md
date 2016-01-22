@@ -129,3 +129,7 @@ Simple Docker Command Usage
   docker exec -u sgeuser -it sgemaster bash -c '. /etc/profile.d/sge.sh; echo "/bin/hostname" | qsub'
   docker exec -u sgeuser -it sgemaster cat /home/sgeuser/STDIN.o1
   ```
+
+Others
+----
+* This product includes software developed by Members of the Geant4 Collaboration ( http://cern.ch/geant4 ).
