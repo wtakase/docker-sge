@@ -16,9 +16,11 @@ Kubernetes All-in-One Usage
 
 2. Submit Job
 
+  Replace JOB_ID, TASK_START_ID, and TASK_END_ID.
   ```bash
-  kubectl exec sgemaster -- sudo su sgeuser bash -c '. /etc/profile.d/sge.sh; echo "/bin/hostname" | qsub'
-  kubectl exec sgemaster -- sudo su sgeuser bash -c 'cat /home/sgeuser/STDIN.o1'
+  cat ./ptsim/script/simple_ptsim_job.sh | kubectl exec -i sgemaster -- sudo su sgeuser bash -c 'cat > /home/sgeuser/simple_ptsim_job.sh; . /etc/profile.d/sge.sh; cd /home/sgeuser; qsub -t TASK_START_ID-TASK_END_ID simple_ptsim_job.sh'
+  cat ./ptsim/script/merge_root.sh | kubectl exec -i sgemaster -- sudo su sgeuser bash -c 'cat > /home/sgeuser/merge_root.sh; . /etc/profile.d/sge.sh; cd /home/sgeuser; qsub merge_root.sh JOB_ID TASK_START_ID TASK_END_ID'
+  kubectl exec sgemaster -- cat /home/sgeuser/ptsim/JOB_ID/merged.root > merged.root
   ```
 
 3. Add SGE workers
@@ -78,9 +80,11 @@ Kubernetes Sted-by-Step Usage
 
 5. Submit job
 
+  Replace JOB_ID, TASK_START_ID, and TASK_END_ID.
   ```bash
-  kubectl exec sgemaster -- sudo su sgeuser bash -c '. /etc/profile.d/sge.sh; echo "/bin/hostname" | qsub'
-  kubectl exec sgemaster -- sudo su sgeuser bash -c 'cat /home/sgeuser/STDIN.o1'
+  cat ./ptsim/script/simple_ptsim_job.sh | kubectl exec -i sgemaster -- sudo su sgeuser bash -c 'cat > /home/sgeuser/simple_ptsim_job.sh; . /etc/profile.d/sge.sh; cd /home/sgeuser; qsub -t TASK_START_ID-TASK_END_ID simple_ptsim_job.sh'
+  cat ./ptsim/script/merge_root.sh | kubectl exec -i sgemaster -- sudo su sgeuser bash -c 'cat > /home/sgeuser/merge_root.sh; . /etc/profile.d/sge.sh; cd /home/sgeuser; qsub merge_root.sh JOB_ID TASK_START_ID TASK_END_ID'
+  kubectl exec sgemaster -- cat /home/sgeuser/ptsim/JOB_ID/merged.root > merged.root
   ```
 
 6. Add SGE workers
