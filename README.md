@@ -27,7 +27,7 @@ Kubernetes All-in-One Usage
   ./kubernetes/add_sge_workers.sh 10
   ```
 
-Kubernetes Sted-by-Step Usage
+Kubernetes Step-by-Step Usage
 ----
 1. Setup Kubernetes cluster
 
