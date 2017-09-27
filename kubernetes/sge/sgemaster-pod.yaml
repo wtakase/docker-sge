@@ -7,7 +7,7 @@ metadata:
 spec:
   containers:
   - name: sgemaster
-    image: wtakase/sge-master
+    image: wtakase/sge-master:ubuntu
     ports:
     - containerPort: 22
       protocol: TCP

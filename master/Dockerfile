@@ -1,4 +1,4 @@
-FROM wtakase/sge-base
+FROM wtakase/sge-base:ubuntu
 MAINTAINER wtakase <wataru.takase@kek.jp>
 
 EXPOSE 6444

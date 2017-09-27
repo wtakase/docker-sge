@@ -8,7 +8,7 @@ metadata:
 spec:
   containers:
   - name: sgeworker001
-    image: wtakase/sge-worker
+    image: wtakase/sge-worker:ubuntu
     env:
     - name: SGEMASTER_PORT_22_TCP_ADDR
       value: sgemaster
