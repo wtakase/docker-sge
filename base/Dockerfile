@@ -2,7 +2,7 @@ FROM ubuntu:16.04
 MAINTAINER wtakase <wataru.takase@kek.jp>
 
 RUN apt-get -y update
-RUN apt-get -y install openssh-server openssh-client nfs-common rpm alien curl
+RUN apt-get -y install openssh-server openssh-client nfs-common rpm alien curl sudo
 
 RUN apt-get -y build-dep gridengine
 RUN apt-get -y install libjemalloc-dev libssl-dev libncurses-dev libpam-dev net-tools \
@@ -36,4 +36,5 @@ RUN rm -f /etc/ssh/ssh_host_dsa_key /etc/ssh/ssh_host_rsa_key && \
 RUN echo "source /opt/sge/default/common/settings.sh" >> /etc/profile.d/sge.sh
 RUN sed -i -e "s/^hosts:.*/hosts:      dns files/g" /etc/nsswitch.conf
 
+RUN mkdir /run/sendsigs.omit.d && mkdir /var/run/sshd
 EXPOSE 22
