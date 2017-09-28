@@ -1,7 +1,7 @@
 #!/bin/bash
 
 mv /opt/sge /tmp/
-/sbin/service rpcbind start
+/usr/sbin/service rpcbind start
 mount -t nfs ${NFSHOME_PORT_2049_TCP_ADDR}:/ /home
 mount -t nfs ${NFSOPT_PORT_2049_TCP_ADDR}:/ /opt
 if [ -z "${NOT_INIT}" ]; then

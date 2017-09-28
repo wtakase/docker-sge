@@ -1,6 +1,6 @@
 #!/bin/bash
 
-/sbin/service rpcbind start
+/usr/sbin/service rpcbind start
 mount -t nfs ${NFSHOME_PORT_2049_TCP_ADDR}:/ /home
 mount -t nfs ${NFSOPT_PORT_2049_TCP_ADDR}:/ /opt
 useradd -u 10000 sgeuser
